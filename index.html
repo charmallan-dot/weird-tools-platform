@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ WeirdTools - Bizarre, Viral, Useful Web Tools</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <span class="logo-icon">🌀</span>
+            <h1>WeirdTools</h1>
+        </div>
+        <p class="tagline">Bizarre. Viral. Useful.</p>
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="time">⏰ Time</button>
+            <button class="nav-btn" data-section="decisions">🎲 Decisions</button>
+            <button class="nav-btn" data-section="generators">✨ Generators</button>
+            <button class="nav-btn" data-section="calculators">🧮 Calculators</button>
+            <button class="nav-btn" data-section="visual">🎨 Visual</button>
+            <button class="nav-btn" data-section="productivity">⚡ Productivity</button>
+            <button class="nav-btn" data-section="community">👥 Community</button>
+        </nav>
+    </header>
+
+    <main class="content">
+        <!-- TIME SECTION -->
+        <section id="time" class="section active">
+            <h2>⏰ What Time Is It? (100 Ways)</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Digital Clock</h3>
+                    <div id="digital-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Binary Time</h3>
+                    <div id="binary-clock" class="clock-display binary"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Words Time</h3>
+                    <div id="words-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Color Time</h3>
+                    <div id="color-clock" class="clock-display color"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Unix Timestamp</h3>
+                    <div id="unix-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Hex Time</h3>
+                    <div id="hex-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Roman Numerals</h3>
+                    <div id="roman-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Progress Bar</h3>
+                    <div id="progress-clock" class="clock-display">
+                        <div class="progress-bar"><div class="progress-fill" id="day-progress"></div></div>
+                        <span id="day-percent">0%</span>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Emoji Time</h3>
+                    <div id="emoji-clock" class="clock-display"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Percentage of Day</h3>
+                    <div id="percent-clock" class="clock-display"></div>
+                </div>
+            </div>
+            <button id="more-time-btn" class="load-more-btn">Show 90 More Time Formats</button>
+            <div id="extra-time-formats" class="extra-formats hidden"></div>
+        </section>
+
+        <!-- DECISIONS SECTION -->
+        <section id="decisions" class="section">
+            <h2>🎲 Decision Makers</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Coin Flip</h3>
+                    <div id="coin" class="coin">
+                        <div class="coin-face heads">👑</div>
+                        <div class="coin-face tails">🦅</div>
+                    </div>
+                    <button onclick="flipCoin()">Flip Coin</button>
+                    <div id="coin-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Dice Roll</h3>
+                    <div id="dice" class="dice">⚀</div>
+                    <button onclick="rollDice()">Roll Dice</button>
+                    <div id="dice-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Wheel of Fortune</h3>
+                    <canvas id="wheel" width="300" height="300"></canvas>
+                    <button onclick="spinWheel()">Spin!</button>
+                    <div id="wheel-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>AI Advisor</h3>
+                    <input type="text" id="decision-input" placeholder="What should I do?">
+                    <button onclick="getAIAdvice()">Ask AI</button>
+                    <div id="ai-advice" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Random Number</h3>
+                    <div class="number-display">
+                        <input type="number" id="min-num" value="1" placeholder="Min">
+                        <span>to</span>
+                        <input type="number" id="max-num" value="100" placeholder="Max">
+                    </div>
+                    <button onclick="generateRandomNumber()">Generate</button>
+                    <div id="random-number" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Yes/No/Maybe</h3>
+                    <div id="ynm-result" class="result large"></div>
+                    <button onclick="getYesNoMaybe()">Ask Universe</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GENERATORS SECTION -->
+        <section id="generators" class="section">
+            <h2>✨ Generators</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Name Generator</h3>
+                    <select id="name-type">
+                        <option value="fantasy">Fantasy</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="startup">Startup</option>
+                        <option value="band">Band Name</option>
+                        <option value="superhero">Superhero</option>
+                    </select>
+                    <button onclick="generateName()">Generate Name</button>
+                    <div id="name-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Password Generator</h3>
+                    <div class="password-options">
+                        <label><input type="checkbox" id="pass-upper" checked> A-Z</label>
+                        <label><input type="checkbox" id="pass-lower" checked> a-z</label>
+                        <label><input type="checkbox" id="pass-num" checked> 0-9</label>
+                        <label><input type="checkbox" id="pass-symbol" checked> !@#</label>
+                    </div>
+                    <input type="range" id="pass-length" min="8" max="64" value="16">
+                    <span id="pass-length-val">16</span>
+                    <button onclick="generatePassword()">Generate</button>
+                    <div id="password-result" class="result password"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Excuse Generator</h3>
+                    <button onclick="generateExcuse()">Generate Excuse</button>
+                    <div id="excuse-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Compliment Generator</h3>
+                    <button onclick="generateCompliment()">Get Compliment</button>
+                    <div id="compliment-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Fortune Cookie</h3>
+                    <button onclick="getFortune()">Open Cookie</button>
+                    <div id="fortune-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Haiku Generator</h3>
+                    <button onclick="generateHaiku()">Generate Haiku</button>
+                    <div id="haiku-result" class="result haiku"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Dad Joke</h3>
+                    <button onclick="getDadJoke()">Tell Joke</button>
+                    <div id="joke-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Conspiracy Theory</h3>
+                    <button onclick="generateConspiracy()">Generate Theory</button>
+                    <div id="conspiracy-result" class="result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALCULATORS SECTION -->
+        <section id="calculators" class="section">
+            <h2>🧮 Calculators</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Age in Days</h3>
+                    <input type="date" id="birthdate">
+                    <button onclick="calculateAgeInDays()">Calculate</button>
+                    <div id="age-days-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Life Expectancy</h3>
+                    <input type="date" id="life-birthdate">
+                    <select id="life-gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <button onclick="calculateLifeExpectancy()">Calculate</button>
+                    <div id="life-expectancy-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Tip Splitter</h3>
+                    <input type="number" id="bill-amount" placeholder="Bill Amount">
+                    <input type="number" id="tip-percent" placeholder="Tip %" value="20">
+                    <input type="number" id="people-count" placeholder="People" value="1">
+                    <button onclick="calculateTip()">Calculate</button>
+                    <div id="tip-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Date Difference</h3>
+                    <input type="date" id="date1">
+                    <input type="date" id="date2">
+                    <button onclick="calculateDateDiff()">Calculate</button>
+                    <div id="date-diff-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Days Until...</h3>
+                    <input type="date" id="target-date">
+                    <button onclick="calculateDaysUntil()">Calculate</button>
+                    <div id="days-until-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Percentage Calculator</h3>
+                    <input type="number" id="percent-value" placeholder="Value">
+                    <input type="number" id="percent-total" placeholder="of Total">
+                    <button onclick="calculatePercentage()">Calculate</button>
+                    <div id="percent-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Time Zone Converter</h3>
+                    <select id="tz-from">
+                        <option value="UTC">UTC</option>
+                        <option value="America/New_York">New York</option>
+                        <option value="America/Los_Angeles">Los Angeles</option>
+                        <option value="Europe/London">London</option>
+                        <option value="Europe/Paris">Paris</option>
+                        <option value="Asia/Tokyo">Tokyo</option>
+                        <option value="Asia/Shanghai">Shanghai</option>
+                        <option value="Australia/Sydney">Sydney</option>
+                    </select>
+                    <span>to</span>
+                    <select id="tz-to">
+                        <option value="UTC">UTC</option>
+                        <option value="America/New_York">New York</option>
+                        <option value="America/Los_Angeles">Los Angeles</option>
+                        <option value="Europe/London">London</option>
+                        <option value="Europe/Paris">Paris</option>
+                        <option value="Asia/Tokyo">Tokyo</option>
+                        <option value="Asia/Shanghai">Shanghai</option>
+                        <option value="Australia/Sydney">Sydney</option>
+                    </select>
+                    <button onclick="convertTimeZone()">Convert</button>
+                    <div id="tz-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>BPM Calculator</h3>
+                    <button id="tap-btn" onmousedown="tapBPM()">TAP</button>
+                    <div id="bpm-result" class="result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISUAL SECTION -->
+        <section id="visual" class="section">
+            <h2>🎨 Visual Experiments</h2>
+            <div class="tools-grid">
+                <div class="tool-card full-width">
+                    <h3>Particle System</h3>
+                    <canvas id="particle-canvas" width="800" height="400"></canvas>
+                    <div class="controls">
+                        <button onclick="toggleParticles()">Toggle</button>
+                        <button onclick="resetParticles()">Reset</button>
+                        <label>Count: <input type="range" id="particle-count" min="50" max="500" value="200"></label>
+                    </div>
+                </div>
+                <div class="tool-card full-width">
+                    <h3>Infinite Zoom</h3>
+                    <canvas id="zoom-canvas" width="800" height="400"></canvas>
+                    <div class="controls">
+                        <button onclick="toggleZoom()">Toggle</button>
+                        <button onclick="resetZoom()">Reset</button>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Color Mixer</h3>
+                    <input type="color" id="color1" value="#ff0000">
+                    <input type="color" id="color2" value="#0000ff">
+                    <button onclick="mixColors()">Mix</button>
+                    <div id="color-mix-result" class="color-result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Gradient Generator</h3>
+                    <input type="color" id="grad1" value="#667eea">
+                    <input type="color" id="grad2" value="#764ba2">
+                    <select id="grad-type">
+                        <option value="linear">Linear</option>
+                        <option value="radial">Radial</option>
+                    </select>
+                    <button onclick="generateGradient()">Generate</button>
+                    <div id="gradient-result" class="gradient-result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Moiré Pattern</h3>
+                    <canvas id="moire-canvas" width="300" height="300"></canvas>
+                    <button onclick="randomizeMoire()">Randomize</button>
+                </div>
+                <div class="tool-card">
+                    <h3>Spirograph</h3>
+                    <canvas id="spiro-canvas" width="300" height="300"></canvas>
+                    <button onclick="drawSpirograph()">Draw</button>
+                    <button onclick="clearSpirograph()">Clear</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTIVITY SECTION -->
+        <section id="productivity" class="section">
+            <h2>⚡ Productivity Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Pomodoro Timer</h3>
+                    <div id="pomodoro-display" class="timer-display">25:00</div>
+                    <div class="timer-controls">
+                        <button onclick="startPomodoro()">Start</button>
+                        <button onclick="pausePomodoro()">Pause</button>
+                        <button onclick="resetPomodoro()">Reset</button>
+                    </div>
+                    <div class="pomodoro-modes">
+                        <button onclick="setPomodoroMode(25)">Focus</button>
+                        <button onclick="setPomodoroMode(5)">Short Break</button>
+                        <button onclick="setPomodoroMode(15)">Long Break</button>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Focus Timer</h3>
+                    <input type="number" id="focus-minutes" value="30" min="1" max="180">
+                    <div id="focus-display" class="timer-display">30:00</div>
+                    <div class="timer-controls">
+                        <button onclick="startFocus()">Start</button>
+                        <button onclick="pauseFocus()">Pause</button>
+                        <button onclick="resetFocus()">Reset</button>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Break Reminder</h3>
+                    <label>Every <input type="number" id="break-interval" value="30" min="5" max="120"> min</label>
+                    <button id="break-toggle" onclick="toggleBreakReminder()">Enable</button>
+                    <div id="break-status" class="result"></div>
+                </div>
+                <div class="tool-card full-width">
+                    <h3>Habit Tracker</h3>
+                    <div class="habit-input">
+                        <input type="text" id="habit-name" placeholder="New habit...">
+                        <button onclick="addHabit()">Add</button>
+                    </div>
+                    <div id="habits-list" class="habits-list"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Breathing Exercise</h3>
+                    <div id="breath-circle" class="breath-circle"></div>
+                    <div id="breath-text">Ready</div>
+                    <button onclick="startBreathing()">Start</button>
+                </div>
+                <div class="tool-card">
+                    <h3>Task Randomizer</h3>
+                    <textarea id="task-list" placeholder="Enter tasks, one per line..."></textarea>
+                    <button onclick="randomizeTask()">Pick Random Task</button>
+                    <div id="random-task" class="result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY SECTION -->
+        <section id="community" class="section">
+            <h2>👥 Community Features</h2>
+            <div class="tools-grid">
+                <div class="tool-card full-width">
+                    <h3>Daily Challenge</h3>
+                    <div id="daily-challenge" class="challenge-box">
+                        <h4>Today's Challenge</h4>
+                        <p id="challenge-text">Loading...</p>
+                        <button onclick="completeChallenge()">✓ Complete</button>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Submit Your Tool Idea</h3>
+                    <input type="text" id="tool-idea" placeholder="What tool should we build?">
+                    <textarea id="tool-desc" placeholder="Describe your idea..."></textarea>
+                    <button onclick="submitToolIdea()">Submit</button>
+                    <div id="submit-result" class="result"></div>
+                </div>
+                <div class="tool-card">
+                    <h3>Leaderboard</h3>
+                    <div id="leaderboard" class="leaderboard">
+                        <div class="leader-entry"><span>1.</span> <span>ToolMaster</span> <span>1,234 pts</span></div>
+                        <div class="leader-entry"><span>2.</span> <span>WeirdWizard</span> <span>987 pts</span></div>
+                        <div class="leader-entry"><span>3.</span> <span>ChaosCoder</span> <span>756 pts</span></div>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h3>Support Us</h3>
+                    <p>Love WeirdTools? Support our weirdness!</p>
+                    <a href="https://ko-fi.com" target="_blank" class="kofi-btn">☕ Buy us a Ko-fi</a>
+                    <div class="support-options">
+                        <button onclick="showPremium()">✨ Premium Features</button>
+                        <button onclick="showAPI()">🔌 API Access</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="monetization-info">
+                <h3>💰 Revenue Model</h3>
+                <div class="revenue-grid">
+                    <div class="revenue-item">
+                        <h4>Ads</h4>
+                        <p>Non-intrusive banner ads</p>
+                        <p class="revenue-est">$500-2,000/mo at scale</p>
+                    </div>
+                    <div class="revenue-item">
+                        <h4>Donations</h4>
+                        <p>Ko-fi, Patreon, GitHub Sponsors</p>
+                        <p class="revenue-est">$200-1,000/mo</p>
+                    </div>
+                    <div class="revenue-item">
+                        <h4>Premium</h4>
+                        <p>Ad-free, exclusive tools, custom themes</p>
+                        <p class="revenue-est">$1,000-5,000/mo</p>
+                    </div>
+                    <div class="revenue-item">
+                        <h4>API Access</h4>
+                        <p>Developer API for all generators</p>
+                        <p class="revenue-est">$500-3,000/mo</p>
+                    </div>
+                </div>
+                <div class="revenue-projection">
+                    <h4>📈 Revenue Projection (Year 1)</h4>
+                    <p>Conservative: <strong>$24,000</strong> | Realistic: <strong>$60,000</strong> | Optimistic: <strong>$150,000+</strong></p>
+                </div>
+            </div>
+
+            <div class="viral-strategy">
+                <h3>🚀 Viral Marketing Strategy</h3>
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <h4>Product Hunt Launch</h4>
+                        <ul>
+                            <li>Launch on Tuesday/Wednesday</li>
+                            <li>Prepare maker comment with story</li>
+                            <li>Engage with every comment</li>
+                            <li>Goal: Top 3 Product of the Day</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>Reddit Strategy</h4>
+                        <ul>
+                            <li>r/InternetIsBeautiful</li>
+                            <li>r/sideproject</li>
+                            <li>r/webdev</li>
+                            <li>r/coolgithubprojects</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>TikTok Content</h4>
+                        <ul>
+                            <li>"Weird tools you didn't know you needed"</li>
+                            <li>Screen recordings of coolest tools</li>
+                            <li>Behind-the-scenes building</li>
+                            <li>User reactions/shares</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>Twitter/X Strategy</h4>
+                        <ul>
+                            <li>Daily tool highlights</li>
+                            <li>Engage with dev community</li>
+                            <li>Build in public updates</li>
+                            <li>Share user submissions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>🌀 WeirdTools - Made with weirdness</p>
+        <p>
+            <a href="#" onclick="alert('Privacy: We don\'t track you. We\'re weird, not creepy.')">Privacy</a> |
+            <a href="#" onclick="alert('Contact: hello@weirdtools.xyz')">Contact</a> |
+            <a href="#" onclick="showAPI()">API</a>
+        </p>
+    </footer>
+
+    <!-- Premium Modal -->
+    <div id="premium-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('premium-modal')">&times;</span>
+            <h2>✨ WeirdTools Premium</h2>
+            <ul>
+                <li>✅ Ad-free experience</li>
+                <li>✅ Exclusive tools & themes</li>
+                <li>✅ Custom branding</li>
+                <li>✅ Priority support</li>
+                <li>✅ Early access to new tools</li>
+            </ul>
+            <p class="price">$4.99/month or $39.99/year</p>
+            <button class="premium-btn">Start Free Trial</button>
+        </div>
+    </div>
+
+    <!-- API Modal -->
+    <div id="api-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('api-modal')">&times;</span>
+            <h2>🔌 WeirdTools API</h2>
+            <p>Access all our generators programmatically!</p>
+            <pre><code>// Example: Generate a password
+fetch('https://api.weirdtools.xyz/v1/password', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer YOUR_KEY' },
+  body: JSON.stringify({ length: 16, symbols: true })
+})</code></pre>
+            <p><strong>Pricing:</strong> Free tier (100 req/day), Pro ($19/mo), Enterprise (custom)</p>
+            <button onclick="alert('API key request submitted!')">Get API Key</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/time.js"></script>
+    <script src="js/decisions.js"></script>
+    <script src="js/generators.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/visual.js"></script>
+    <script src="js/productivity.js"></script>
+    <script src="js/community.js"></script>
+</body>
+</html>
